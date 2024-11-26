@@ -1,0 +1,30 @@
+<html>
+<head>
+ <title>Registration Form</title>
+ <style>
+ .hidden {
+ display: none;
+ }
+ </style>
+</head>
+<body>
+ <div id="form">
+ <form id="registration">
+ <input type="text" id="name" placeholder="Name" required>
+ <input type="number" id="name" placeholder="Age" required>
+ <input type="email" id="email" placeholder="Email" required>
+ <button type="submit">Submit</button>
+ </form>
+ </div>
+ <div id="thankyou" class="hidden">
+ <h3>Thank you for your submission!</h3>
+ </div>
+ <script>
+ document.getElementById('registration').addEventListener('submit', function(event) {
+ event.preventDefault();
+ document.getElementById('form').classList.add('hidden');
+ document.getElementById('thankyou').classList.remove('hidden');
+ });
+ </script>
+</body>
+</html> 
