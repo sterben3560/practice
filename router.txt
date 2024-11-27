@@ -1,0 +1,225 @@
+//propsUsingClasses
+import React, { Component } from 'react';
+export class Parent extends Component {
+ render() {
+ return (
+ <Child name="Aakash" />
+ );
+ }
+}
+export const Child = (props) => {
+ return (
+ <p>
+ <h1><b>{props.name}</b></h1>
+ </p>
+ );
+} 
+
+//states
+import React ,{Component} from "react";
+class seven extends Component{
+ constructor (props){
+ super(props);
+ this.state={id:1, name:"test"}
+ }
+ render(){
+ return(
+ <div>
+ <p>{this.state.id}</p>
+ <p>{this.state.name}</p>
+ </div>
+ )
+ }
+}export default seven; 
+
+//ControlledComponent
+import React from 'react';
+import { useState } from 'react';
+const ControlledComponent=()=>{
+ const [inputText,setInputText]=useState("");
+ const handleSubmit=(e)=>{
+ alert(inputText);
+ }
+ const handleChange=(e)=>
+ {
+ setInputText(e.target.value);
+ }
+ return (
+ <><form>
+ <p>Enter the name<input type="text" value={inputText}
+onChange={handleChange}/></p>
+ <button type="button" onClick={handleSubmit}>Submit</button>
+ </form></>
+ );
+}
+export default ControlledComponent;
+
+//UncontrolledComponent
+import React ,{useRef} from 'react';
+const Uncontrolled=()=>{
+ const inputRef=useRef(null);
+ const handleSubmit=(e)=>{
+ // e.preventDefault();
+ alert(inputRef.current.value);
+ }
+ return(
+ <><form>
+ <p>Enter the name :<input type='text' ref={inputRef}/></p>
+ <button onClick={handleSubmit}>Submit</button>
+ </form></>
+ );
+}
+export default Uncontrolled;
+
+import React, { useState } from 'react';
+function TextConverter() {
+ const [text,setText] = useState('');
+ const handleConvertToUpperCase = () => {
+ setText(text.toUpperCase());
+ };
+ const handleConvertToLowerCase = () => {
+ setText(text.toLowerCase());
+ };
+ return (
+ <div>
+ <textarea
+ value={text}
+ onChange={(e) => setText(e.currentTarget.value)}
+ />
+ <br />
+ <button onClick={handleConvertToUpperCase}>Upper Case</button>
+ <button onClick={handleConvertToLowerCase}>Lower Case</button>
+ </div>
+ );
+}
+export default TextConverter; 
+
+import React,{useState} from "react";
+function Test (){
+const[text, settext]=useState();
+const handlechange=(e)=>settext(e.target.value)
+return(
+<>
+<form>
+<label>present address</label>
+<textarea type="text" value={text}
+onChange={handlechange}></textarea><br></br><br></br>
+<label>permanent address</label>
+<textarea type="text" value={text}
+onChange={handlechange}></textarea>
+</form>
+</>
+);
+}
+export default Test; 
+
+react router
+
+index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App/>);
+
+App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Home from './Home';
+import Login from './Login;
+import About from './About;
+function App() {
+ return (
+ <Router>
+ <nav>
+ <ul>
+ <li><Link to="/">Home</Link></li>
+ <li><Link to="/Login">Login</Link></li>
+ <li><Link to="/About">About</Link></li>
+ </ul>
+ </nav>
+ <Routes>
+ <Route path="/" element={<Home />} />
+ <Route path="/login" element={<Login />} />
+ <Route path="/about" element={<About />} />
+ </Routes>
+ </Router>
+ );
+}
+export default App;
+
+index.css
+* {
+ padding: 0;
+ margin: 0;
+}
+nav {
+ display: flex;
+ gap: 34px;
+ background-color: black;
+ color: white;
+}
+li {
+ list-style: none;
+}
+a li {
+ color: white;
+ padding: 23px;
+}
+.red {
+ background-color: red;
+ color: white;
+}
+
+Navbar.js
+import React from 'react'
+import { Link } from 'react-routerdom'; function Navbar() {
+ return ( 
+ <div>
+ <nav>
+ <Link to="/"><li>Home</li></Link>
+ <Link to="/login"><li>Login</li></Link> 
+ <Link to="/about"><li>About Us</li></Link>
+
+ </nav>
+ </div>
+ )
+}
+export default Navbar; 
+
+Home.js
+import React from 'react';
+function Home() {
+ return (
+ <div>
+ <h1>Home Page</h1>
+ <p>Welcome to the Home Page!</p>
+ </div>
+ );
+}
+export default Home;
+
+Login.js
+import React from 'react';
+function Login() {
+ return (
+ <div>
+ <h1>Login Page</h1>
+ <p>This is the Login Page.</p>
+ </div>
+ );
+}
+export default login;
+
+About.js
+import React from 'react';
+function About() {
+ return (
+ <div>
+ <h1>About Page</h1>
+ <p>This is the About Page.</p>
+ </div>
+ );
+}
+export default About; 
